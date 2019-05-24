@@ -1,0 +1,12 @@
+body {
+	background: #cce5ff;
+}
+
+li a {
+	color: black;
+	font-weight: bold;
+}
+
+.active {
+	color:  #992600;
+}

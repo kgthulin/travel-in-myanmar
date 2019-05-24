@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<constant name="struts.devMode" value="false" />
+	<package name="default" extends="struts-default">
+		<action name="RegisterAction" class="com.myanmar.travel.action.RegisterAction" method="register">
+			<result>/loginForm.jsp</result>
+			<result name="input">/registerForm.jsp</result>
+		</action>
+		<action name="LoginAction" class="com.myanmar.travel.action.LogInAction" method="login">
+			<result name="successAdmin" type="redirectAction">ViewPackageAction</result>
+			<result name="successUser" type="redirectAction">setupForSearchForm</result>
+			<result name="input">/loginForm.jsp</result>
+		</action>
+		<action name="AddLocationAction" class="com.myanmar.travel.action.LocationAction" method="addLocation">
+			<result type="redirectAction">ViewLocationAction</result>
+		</action>
+		<action name="ViewLocationAction" class="com.myanmar.travel.action.LocationAction" method="viewLocation">
+			<result>/location/viewLocation.jsp</result>
+		</action>
+		<action name="DeleteLocationAction" class="com.myanmar.travel.action.LocationAction" method="deleteLocation">
+			<result type="redirectAction">ViewLocationAction</result>
+			<result name="failDelete" type="redirectAction">ViewLocationAction</result>
+		</action>
+		<action name="setUpForHotelLocation" class="com.myanmar.travel.action.HotelAction" method="setUpForLocation">
+			<result>/hotel/addHotel.jsp</result>
+		</action>
+		<action name="AddHotelAction" class="com.myanmar.travel.action.HotelAction" method="addHotel">
+			<result type="redirectAction">ViewHotelAction</result>
+		</action>
+		<action name="ViewHotelAction" class="com.myanmar.travel.action.HotelAction" method="viewHotel">
+			<result>/hotel/viewHotel.jsp</result>
+		</action>
+		<action name="setUpForHotelUpdate" class="com.myanmar.travel.action.HotelAction" method="setUpForUpdate">
+			<result>/hotel/updateHotel.jsp</result>
+		</action>
+		<action name="UpdateHotelAction" class="com.myanmar.travel.action.HotelAction" method="updateHotel">
+			<result type="redirectAction">ViewHotelAction</result>
+		</action>
+		<action name="DeleteHotelAction" class="com.myanmar.travel.action.HotelAction" method="deleteHotel">
+			<result type="redirectAction">ViewHotelAction</result>
+			<result name="failDelete" type="redirectAction">ViewHotelAction</result>
+		</action>
+		<action name="setUpForRestaurantLocation" class="com.myanmar.travel.action.RestaurantAction" method="setUpForLocation">
+			<result>/restaurant/addRestaurant.jsp</result>
+		</action>
+		<action name="AddRestaurantAction" class="com.myanmar.travel.action.RestaurantAction" method="addRestaurant">
+			<result type="redirectAction">ViewRestaurantAction</result>
+		</action>
+		<action name="ViewRestaurantAction" class="com.myanmar.travel.action.RestaurantAction" method="viewRestaurant">
+			<result>/restaurant/viewRestaurant.jsp</result>
+		</action>
+		<action name="setUpForRestaurantUpdate" class="com.myanmar.travel.action.RestaurantAction" method="setUpForUpdate">
+			<result>/restaurant/updateRestaurant.jsp</result>
+		</action>
+		<action name="UpdateRestaurantAction" class="com.myanmar.travel.action.RestaurantAction" method="updateRestaurant">
+			<result type="redirectAction">ViewRestaurantAction</result>
+		</action>
+		<action name="DeleteRestaurantAction" class="com.myanmar.travel.action.RestaurantAction" method="deleteRestaurant">
+			<result type="redirectAction">ViewRestaurantAction</result>
+			<result name="failDelete" type="redirectAction">ViewRestaurantAction</result>
+		</action>
+		<action name="setUpForTicketLocation" class="com.myanmar.travel.action.TicketAction" method="setUpForLocation">
+			<result>/ticket/addTicket.jsp</result>
+		</action>
+		<action name="AddTicketAction" class="com.myanmar.travel.action.TicketAction" method="addTicket">
+			<result type="redirectAction">ViewTicketAction</result>
+		</action>
+		<action name="ViewTicketAction" class="com.myanmar.travel.action.TicketAction" method="viewTicket">
+			<result>/ticket/viewTicket.jsp</result>
+		</action>
+		<action name="setUpForTicketUpdate" class="com.myanmar.travel.action.TicketAction" method="setUpForUpdate">
+			<result>/ticket/updateTicket.jsp</result>
+		</action>
+		<action name="UpdateTicketAction" class="com.myanmar.travel.action.TicketAction" method="updateTicket">
+			<result type="redirectAction">ViewTicketAction</result>
+		</action>
+		<action name="DeleteTicketAction" class="com.myanmar.travel.action.TicketAction" method="deleteTicket">
+			<result type="redirectAction">ViewTicketAction</result>
+			<result name="failDelete" type="redirectAction">ViewTicketAction</result>
+		</action>
+		<action name="LogOutAction" class="com.myanmar.travel.action.LogOutAction" method="logout">
+			<result type="redirect">/index.html</result>
+		</action>
+		<action name="setUpForPackageLocation" class="com.myanmar.travel.action.TravelPackageAction" method="setUpForLocation">
+			<result>/package/selectLocation.jsp</result>
+		</action>
+		<action name="setUpForAddPackage" class="com.myanmar.travel.action.TravelPackageAction" method="setUpForAddPackage">
+			<result>/package/addPackage.jsp</result>
+		</action>
+		<action name="AddPackageAction" class="com.myanmar.travel.action.TravelPackageAction" method="addPackage">
+			<result type="chain">TotalPriceAction</result>
+		</action>
+		<action name="TotalPriceAction" class="com.myanmar.travel.action.TravelPackageAction" method="totalPrice">
+			<result type="redirectAction">ViewPackageAction</result>
+			<result name="failToCreate" type="redirectAction">ViewPackageAction</result>
+		</action>
+		<action name="ViewPackageAction" class="com.myanmar.travel.action.TravelPackageAction" method="viewPackage">
+			<result>/package/viewPackage.jsp</result>
+		</action>
+		<action name="ViewDetailAction" class="com.myanmar.travel.action.TravelPackageAction" method="viewDetail">
+			<result>/package/viewDetail.jsp</result>
+		</action>
+<!-- 		<action name="setUpForPackageUpdate" class="com.myanmar.travel.action.TravelPackageAction" method="setupForUpdate">
+			<result>/package/updatePackage.jsp</result>
+		</action> -->
+<!-- 		<action name="UpdatePackageAction" class="com.myanmar.travel.action.TravelPackageAction" method="updatePackage">
+			<result type="redirectAction">ViewDetailAction</result>
+		</action> -->
+		<action name="DeletePackageAction" class="com.myanmar.travel.action.TravelPackageAction" method="deletePackage">
+			<result type="redirectAction">ViewDetailAction</result>
+			<result name="failDelete" type="redirectAction">ViewDetailAction</result>
+		</action>
+		<action name="setupForSearchForm" class="com.myanmar.travel.action.TravelPackageAction" method="setupForSearchForm">
+			<result>/package/searchForm.jsp</result>
+		</action>
+		<action name="SearchPackageAction" class="com.myanmar.travel.action.TravelPackageAction" method="searchPackage">
+			<result>/package/searchResult.jsp</result>
+		</action>
+		<action name="BuyPackageAction" class="com.myanmar.travel.action.BuyPackageAction" method="buyPackage">
+			<result type="redirectAction">SearchPackageAgainAction</result>
+		</action>	
+		<action name="SearchPackageAgainAction" class="com.myanmar.travel.action.BuyPackageAction" method="searchPackageAgain">
+			<result>/package/searchResult.jsp</result>
+		</action>		
+		<action name="ContactAction" class="com.myanmar.travel.action.ContactAction" method="contact">
+			<result>/contact.html</result>
+		</action>
+		<action name="YourPackageAction" class="com.myanmar.travel.action.TravelPackageAction" method="yourPackage">
+			<result>/package/yourPackage.jsp</result>
+		</action>
+		<action name="ViewUserAction" class="com.myanmar.travel.action.UserAction" method="viewUser">
+			<result>/user/viewUser.jsp</result>
+		</action>
+		<action name="DeleteUserAction" class="com.myanmar.travel.action.UserAction" method="deleteUser">
+			<result type="redirectAction">ViewUserAction</result>
+		</action>
+	</package>
+</struts>
